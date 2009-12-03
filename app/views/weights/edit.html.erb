@@ -1,19 +1,25 @@
+<script type="text/javascript">
+    $(function()
+    {
+        $('.date-pick').datePicker({startDate:'01/11/2009'}).val(new Date().asString()).trigger('change');
+    });
+</script>
 <h1>Editing weight</h1>
 
 <% form_for(@weight) do |f| %>
-  <%= f.error_messages %>
+    <%= f.error_messages %>
 
-  <p>
-    <%= f.label :date %><br />
-    <%= f.datetime_select :date %>
-  </p>
-  <p>
-    <%= f.label :weight %><br />
-    <%= f.text_field :weight %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+    <p>
+      <%= f.label :date %><br/>
+      <%= f.text_field :date, :readonly => true, :class => 'date-pick' %>
+    </p>
+    <p>
+      <%= f.label :weight %><br/>
+      <%= f.text_field :weight %>
+    </p>
+    <p>
+      <%= f.submit 'Update' %>
+    </p>
 <% end %>
 
 <%= link_to 'Show', @weight %> |
