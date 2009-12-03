@@ -1,4 +1,5 @@
 class WeightsController < ApplicationController
+  include AuthenticatedSystem
   before_filter :authorize
 
   def index
