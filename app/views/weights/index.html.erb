@@ -8,7 +8,7 @@
 
 <% @weights.each do |weight| %>
   <tr>
-    <td><%=h weight.date %></td>
+    <td><%=h weight.date.strftime('%d/%m/%Y') %></td>
     <td><%=h weight.weight %></td>
     <td><%= link_to 'Show', weight %></td>
     <td><%= link_to 'Edit', edit_weight_path(weight) %></td>
