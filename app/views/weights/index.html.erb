@@ -1,23 +1,23 @@
-<h1>Listing weights</h1>
+<h1>Lista de pesos</h1>
 
 <table>
   <tr>
-    <th>Date</th>
-    <th>Weight</th>
+    <th>Data</th>
+    <th>Peso</th>
   </tr>
 
 <% @weights.each do |weight| %>
   <tr>
     <td><%=h weight.date.strftime('%d/%m/%Y') %></td>
     <td><%=h weight.weight %></td>
-    <td><%= link_to 'Show', weight %></td>
-    <td><%= link_to 'Edit', edit_weight_path(weight) %></td>
-    <td><%= link_to 'Destroy', weight, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Detalhes', weight %></td>
+    <td><%= link_to 'Editar', edit_weight_path(weight) %></td>
+    <td><%= link_to 'Apagar', weight, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New weight', new_weight_path %><br />
-<%= link_to 'Logout', logout_path %>
+<%= link_to 'Incluir', new_weight_path %><br />
+<%= link_to 'Sair', logout_path %>
