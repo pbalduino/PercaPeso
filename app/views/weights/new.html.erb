@@ -11,11 +11,11 @@
 
   <p>
     <%= f.label :date %><br />
-      <%= f.text_field :date, :readonly => true, :class => 'date-pick', :maxlength => 6 %>
+      <%= f.text_field :date, :readonly => true, :class => 'date-pick' %>
   </p>
   <p>
     <%= f.label :weight %><br />
-    <%= f.text_field :weight %>
+    <%= f.text_field :weight, :maxlength => 6 %>
   </p>
   <p>
     <%= f.submit 'Create' %>
