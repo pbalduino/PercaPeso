@@ -1,7 +1,7 @@
 class AddFieldsToUser < ActiveRecord::Migration
   def self.up
-    add_column :users, :height, :integer, :limit => 3
-    add_column :users, :meta, :decimal, :limit => 6, :precision => 1
+    add_column :users, :height, :integer, :precision => 3
+    add_column :users, :meta, :decimal, :precision => 3, :scale => 1
     add_column :users, :date, :date
   end
 
