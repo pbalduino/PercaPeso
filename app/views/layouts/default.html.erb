@@ -17,19 +17,15 @@
             var data = {};
             data['field'] = $(this).attr('associate');
             data['value'] = $($(this).attr('associate')).attr('value');
-            console.log('sending')
             $.post('/profile_update', data, function(data) {
-                console.log(data);
                 $(this).attr('src', '');
-                $(this).remove();
-                console.log('done')
             }, 'json');
-            console.log('waiting');
             $(this).attr('src', '/images/loading.gif');
             $($(this).attr('associate')).removeClass('labelified_active');
             $($(this).attr('associate')).addClass('labelified');
             $($(this).attr('associate')).attr('read_only', true);
             $($(this).attr('associate')).bind('click', onClick);
+            $(this).remove();
         }
 
         function onClick() {
