@@ -17,11 +17,18 @@
             var data = {};
             data['field'] = $(this).attr('associate');
             data['value'] = $($(this).attr('associate')).attr('value');
-            $.post('/profile_update', data, null, 'json');
+            console.log('sending')
+            $.post('/profile_update', data, function(data) {
+                console.log(data);
+                $(this).attr('src', '');
+                $(this).remove();
+                console.log('done')
+            }, 'json');
+            console.log('waiting');
+            $(this).attr('src', '/images/loading.gif');
             $($(this).attr('associate')).removeClass('labelified_active');
             $($(this).attr('associate')).addClass('labelified');
             $($(this).attr('associate')).attr('read_only', true);
-            $(this).remove();
             $($(this).attr('associate')).bind('click', onClick);
         }
 
@@ -30,7 +37,7 @@
             $(this).removeClass('labelified');
             $(this).addClass('labelified_active');
             $(this).unbind('click', null);
-            $(this).after('<img src="http://joomlalms.co.nz/images/lms_help/icons/apply_icon.png" width="15px" class="apply" associate="#' + $(this).attr('id') + '">')
+            $(this).after('<img src="/images/apply_icon.png" width="15px" class="apply" associate="#' + $(this).attr('id') + '">')
         }
 
         $('.apply').live('click', applyClick);
