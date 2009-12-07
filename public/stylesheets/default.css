@@ -1,36 +1,92 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: large;
-    color: #7f7f7f;
+    font-family:           Arial, Helvetica, sans-serif;
+    font-size:             large;
+    color:                 #7f7f7f;
 }
 
 input {
-    border: #7f7f7f solid 1px;
-    color: #a0a0a0;
+    border:                #7f7f7f solid 1px;
+    color:                 #a0a0a0;
 }
 
 a {
-    color: #7f7f7f;
-    text-decoration: none;
-    font-weight: bold;
+    color:                 #7f7f7f;
+    text-decoration:       none;
+    font-weight:           bold;
 }
 
 a:hover {
-    color: black;
+    color:                 black;
 }
 
 a.dp-choose-date {
-	float: left;
-	width: 16px;
-	height: 16px;
-	padding: 0;
-	margin: 5px 3px 0;
-	display: block;
-	text-indent: -2000px;
-	overflow: hidden;
-	background: url(../images/calendar.png) no-repeat;
+    float:                 left;
+    width:                 16px;
+    height:                16px;
+    padding:               0;
+    margin:                5px 3px 0;
+    display:               block;
+    text-indent:           -2000px;
+    overflow:              hidden;
+    background:            url(../images/calendar.png) no-repeat;
 }
+
 a.dp-choose-date.dp-disabled {
-	background-position: 0 -20px;
-	cursor: default;
+    background-position:   0 -20px;
+    cursor:                default;
+}
+
+#user_data, #user_weight, #graphic {
+    background-color:      #f0f0f0;
+    border:                gray solid 1px;
+    margin-top:            10px;
+    float:                 left;
+    padding:               10px;
+    -moz-border-radius:    5px;
+    -webkit-border-radius: 5px;
+}
+
+#user_data, #user_weight {
+    width:                 400px;
+}
+
+#user_weight {
+    margin-left:           10px;
+}
+
+#graphic {
+    width:                 832px;
+}
+
+.labelified {
+    border-style:          none;
+    cursor:                default;
+    background-color:      transparent;
+    color:                 black;
+}
+
+#user_data label {
+    float:                 left;
+    width:                 85px;
+    font-size:             medium;
+    margin-top:            2px;
+}
+
+#user_data input {
+    margin-top:            2px;
+    color:                 #7f7f7f;
+}
+
+#user_data br {
+    clear:                 left;
+}
+
+#user_weight table {
+    width:                 100%;
+    font-size:             small;
+}
+
+#user_weight th {
+    text-align:            left;
+    font-size:             medium;
 }

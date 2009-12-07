@@ -50,16 +50,4 @@ class WeightsController < ApplicationController
     redirect_to(weights_url)
   end
 
-  private
-  def authorize
-
-    unless request.path == '/' ||
-            request.path == '/signup' ||
-            request.path == '/register' ||
-            User.find_by_id(session[:user_id])
-      flash[:notice] = 'Efetue o login'
-      redirect_to :root
-    end
-  end
-
 end

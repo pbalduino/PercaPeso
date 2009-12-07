@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
 
+  before_filter :authorize, :only => :edit
 
-  # render new.rhtml
   def new
     @user = User.new
   end
@@ -13,16 +12,18 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     success = @user && @user.save
     if success && @user.errors.empty?
-            # Protects against session fixation attacks, causes request forgery
-      # protection if visitor resubmits an earlier form using back
-      # button. Uncomment if you understand the tradeoffs.
-      # reset session
+      reset session
       self.current_user = @user # !! now logged in
-      redirect_to :controller => 'weights'
-      flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+      redirect_to profile_path
+      flash[:notice] = "Obrigado por se cadastrar"
     else
-      flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+      flash[:error] = "Ocorreu um problema ao criar sua conta. Tente de novo ou contate o admin."
       render :action => 'new'
     end
+  end
+
+  def edit
+    @user = User.find(session[:user_id])
+    @weights = Weight.find(:all, :order => :date, :limit => 5, :conditions => {:user_id => session[:user_id]})
   end
 end

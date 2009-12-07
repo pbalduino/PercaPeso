@@ -3,7 +3,7 @@ class CreateWeights < ActiveRecord::Migration
     create_table :weights do |t|
       t.integer :user_id
       t.datetime :date
-      t.decimal :weight
+      t.decimal :weight, :limit => 6, :precision => 1
 
       t.timestamps
     end

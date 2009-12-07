@@ -12,4 +12,13 @@ class ApplicationController < ActionController::Base
 
   layout 'default'
 
+  protected
+  def authorize
+
+    unless User.find_by_id(session[:user_id])
+      flash[:notice] = 'Efetue o login'
+      redirect_to :root
+    end
+  end
+
 end

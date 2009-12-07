@@ -1,0 +1,42 @@
+<%= link_to 'Adicionar peso', weights_path %><br />
+<%= link_to 'Sair', logout_path %><br />
+<div id="user_data">
+  meus dados
+  <% form_for @user do |form| %>
+      <%= form.label :name, 'nome: ' %>
+      <%= form.text_field :name, :class => 'labelified', :disabled => true %>
+      <br/>
+      <%= form.label :email, 'e-mail: ' %>
+      <%= form.text_field :email, :class => 'labelified', :disabled => true %>
+      <br/>
+      <%= form.label :height, 'altura (cm): ' %>
+      <%= form.text_field :height, :class => 'labelified', :disabled => true %>
+      <br/>
+      <%= form.label :meta, 'meta (kg): ' %>
+      <%= form.text_field :meta, :class => 'labelified', :disabled => true %>
+      <br/>
+      <%= form.label :date, 'data: ' %>
+      <%= form.text_field :date, :class => 'labelified', :disabled => true, :value => @user.date ? @user.date.strftime('%d/%m/%Y') : '' %>
+  <% end %>
+</div>
+<div id="user_weight">
+  meu peso
+  <table>
+    <tr>
+      <th>data</th>
+      <th>peso</th>
+      <th>imc</th>
+    </tr>
+    <% @weights.each do |weight| %>
+        <tr>
+          <td><%= weight.date.strftime('%d/%m/%Y') %></td>
+          <td><%= weight.weight %></td>
+          <td><%= '%.3f' % (weight.weight / (@user.height.to_f ** 2 / 10000)) %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+<div id="graphic">
+  evolução x meta <br/>
+  <!-- img src="http://www.cssdrive.com/imagesdir/logo.png" width="740" height="300" -->
+</div>
