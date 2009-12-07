@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.profile '/profile', :controller => 'users', :action => 'edit'
+  map.profile_update '/profile_update', :controller => 'users', :action => 'ajax_update'
 
   map.resources :users
 

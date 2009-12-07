@@ -65,6 +65,13 @@ a.dp-choose-date.dp-disabled {
     color:                 black;
 }
 
+.labelified_active {
+    border-style:          solid;
+    cursor:                auto;
+    background-color:      white;
+    color:                 #7f7f7f;
+}
+
 #user_data label {
     float:                 left;
     width:                 85px;

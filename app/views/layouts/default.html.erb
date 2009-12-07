@@ -1,15 +1,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
   <title>PercaPeso</title>
   <%= javascript_include_tag ['http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js', 'date', 'jquery.datepicker'] %>
 
   <%= stylesheet_link_tag 'default' %>
   <%= stylesheet_link_tag 'datepicker' %>
 </head>
+<script type="text/javascript">
+    var old_text = "";
+    $(document).ready(function() {
+        function applyClick() {
+            var data = {};
+            data['field'] = $(this).attr('associate');
+            data['value'] = $($(this).attr('associate')).attr('value');
+            $.post('/profile_update', data, null, 'json');
+            $($(this).attr('associate')).removeClass('labelified_active');
+            $($(this).attr('associate')).addClass('labelified');
+            $($(this).attr('associate')).attr('read_only', true);
+            $(this).remove();
+            $($(this).attr('associate')).bind('click', onClick);
+        }
+
+        function onClick() {
+            $(this).attr('read_only', false);
+            $(this).removeClass('labelified');
+            $(this).addClass('labelified_active');
+            $(this).unbind('click', null);
+            $(this).after('<img src="http://joomlalms.co.nz/images/lms_help/icons/apply_icon.png" width="15px" class="apply" associate="#' + $(this).attr('id') + '">')
+        }
+
+        $('.apply').live('click', applyClick);
+
+        $('.labelified').bind('click', onClick);
+    });
+</script>
+
 <body>
 
 <p style="color: green"><%= flash[:notice] %></p>
