@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     success = @user && @user.save
     if success && @user.errors.empty?
-      reset session
+      # reset session
       self.current_user = @user # !! now logged in
       redirect_to profile_path
       flash[:notice] = "Obrigado por se cadastrar"
