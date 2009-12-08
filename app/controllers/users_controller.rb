@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def ajax_update
     @user = User.find(session[:user_id])
-    @user[params[:field].sub('#user_', '')] = params[:value]
+    @user[params[:field].sub('#', '')] = params[:value]
     @user.save!
 
     render :json => 'ok', :status => 200
