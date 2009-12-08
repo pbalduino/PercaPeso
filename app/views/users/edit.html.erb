@@ -2,23 +2,22 @@
 <%= link_to 'Sair', logout_path %><br />
 
 <div id="user_data">
-  meus dados
-  <% form_for @user do |form| %>
-      <%= form.label :name, 'nome: ' %>
-      <%= form.text_field :name, :class => 'labelified', :read_only => true %>
-      <br/>
-      <%= form.label :email, 'e-mail: ' %>
-      <%= form.text_field :email, :class => 'labelified', :read_only => true %>
-      <br/>
-      <%= form.label :height, 'altura (cm): ' %>
-      <%= form.text_field :height, :class => 'labelified', :read_only => true %>
-      <br/>
-      <%= form.label :meta, 'meta (kg): ' %>
-      <%= form.text_field :meta, :class => 'labelified', :read_only => true %>
-      <br/>
-      <%= form.label :date, 'data: ' %>
-      <%= form.text_field :date, :class => 'labelified', :read_only => true, :value => @user.date ? @user.date.strftime('%d/%m/%Y') : '' %>
-  <% end %>
+  meus dados<br/>
+  <%= label_tag :name, 'nome: ' %>
+  <%= text_field_tag :name, @user.name, :class => 'labelified', :read_only => true %>
+  <br/>
+  <%= label_tag :email, 'e-mail: ' %>
+  <%= text_field_tag :email, @user.email, :class => 'labelified', :read_only => true %>
+  <br/>
+  <%= label_tag :height, 'altura (cm): ' %>
+  <%= text_field_tag :height, @user.height, :class => 'labelified', :read_only => true %>
+  <br/>
+  <%= label_tag :meta, 'meta (kg): ' %>
+  <%= text_field_tag :meta, @user.meta, :class => 'labelified', :read_only => true %>
+  <br/>
+  <%= label_tag :date, 'data: ' %>
+  <%= text_field_tag :date, @user.date, :class => 'labelified', :read_only => true, :value => @user.date ? @user.date.strftime('%d/%m/%Y') : '' %>
+
 </div>
 <div id="user_weight">
   meu peso
