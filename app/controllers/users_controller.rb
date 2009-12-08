@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(session[:user_id])
-    @weights = Weight.find(:all, :order => :date, :limit => 5, :conditions => {:user_id => session[:user_id]})
+    @weights = Weight.find(:all, :order => 'date DESC', :limit => 5, :conditions => {:user_id => session[:user_id]})
   end
 
   def ajax_update

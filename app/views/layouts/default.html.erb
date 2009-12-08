@@ -17,9 +17,7 @@
             var data = {};
             data['field'] = $(this).attr('associate');
             data['value'] = $($(this).attr('associate')).attr('value');
-            $.post('/profile_update', data, function(data) {
-                $(this).attr('src', '');
-            }, 'json');
+            $.post('/profile_update', data, null, 'json');
             $(this).attr('src', '/images/loading.gif');
             $($(this).attr('associate')).removeClass('labelified_active');
             $($(this).attr('associate')).addClass('labelified');
