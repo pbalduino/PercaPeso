@@ -52,7 +52,7 @@
           <%= "[#{d+=1}, #{value.weight}]," if value %>
           <% end %>];
       meta = [];
-      daily_meta = <%= (@first_weight.weight.to_f - @user.meta.to_f) / 33 %>;
+      <%= "daily_meta = #{(@first_weight.weight.to_f - @user.meta.to_f) / 33}" %>;
       for (i = 0; i < 34; i++) {
           meta.push([i, <%= @first_weight.weight %> - (daily_meta * i)]);
       }
