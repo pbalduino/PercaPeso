@@ -49,7 +49,8 @@
  d = -1;
  (Date.new(fw.year, fw.month, fw.day) .. Date.new(ud.year, ud.month, ud.day)).each do |day| %>
           <% value = Weight.first(:order => :date, :conditions => {:user_id => session[:user_id], :date => DateTime.new(day.year, day.month, day.day)}) %>
-          <%= "[#{d+=1}, #{value.weight}]," if value %>
+          <% d +=1 %> 
+          <%= "[#{d}, #{value.weight}]," if value %>
           <% end %>];
       meta = [];
       <%= "daily_meta = #{(@first_weight.weight.to_f - @user.meta.to_f) / 33}" %>;
