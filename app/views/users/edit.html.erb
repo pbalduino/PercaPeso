@@ -16,7 +16,7 @@
   <%= text_field_tag :meta, @user.meta, :class => 'labelified', :read_only => true %>
   <br/>
   <%= label_tag :date, 'data: ' %>
-  <%= text_field_tag :date, @user.date, :class => 'labelified', :read_only => true, :value => @user.date ? @user.date.strftime('%d/%m/%Y') : '' %>
+  <%= text_field_tag :date, @user.date, :class => 'labelified date-pick', :read_only => true, :value => @user.date ? @user.date.strftime('%d/%m/%Y') : '' %>
 
 </div>
 <div id="user_weight">
@@ -49,7 +49,7 @@
  d = -1;
  (Date.new(fw.year, fw.month, fw.day) .. Date.new(ud.year, ud.month, ud.day)).each do |day| %>
           <% value = Weight.first(:order => :date, :conditions => {:user_id => session[:user_id], :date => DateTime.new(day.year, day.month, day.day)}) %>
-          <% d +=1 %> 
+          <% d +=1 %>
           <%= "[#{d}, #{value.weight}]," if value %>
           <% end %>];
       meta = [];
