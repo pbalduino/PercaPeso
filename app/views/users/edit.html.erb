@@ -1,6 +1,4 @@
-<%= link_to 'Adicionar peso', weights_path %><br />
-<%= link_to 'Sair', logout_path %><br />
-
+<%# TODO: show edit icon when hover textboxes %>
 <div id="user_data">
   meus dados<br/>
   <%= label_tag :name, 'nome: ' %>
@@ -16,7 +14,9 @@
   <%= text_field_tag :meta, @user.meta, :class => 'labelified', :read_only => true %>
   <br/>
   <%= label_tag :date, 'data: ' %>
-  <%= text_field_tag :date, @user.date, :class => 'labelified date-pick', :read_only => true, :value => @user.date ? @user.date.strftime('%d/%m/%Y') : '' %>
+  <%= text_field_tag :date, @user.date, :class => 'labelified', :read_only => true, :value => @user.date ? @user.date.strftime('%d/%m/%Y') : '' %>
+  <br/>
+  <%= link_to 'Sair', logout_path %>
 
 </div>
 <div id="user_weight">
@@ -35,6 +35,8 @@
         </tr>
     <% end %>
   </table>
+  <%= link_to 'Adicionar peso', weights_path %>
+  <br/>
 </div>
 <div id="graphic">
   evolução x meta <br/>

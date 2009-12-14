@@ -10,44 +10,24 @@
   <%= javascript_include_tag ['jquery.min',
                               'date',
                               'jquery.datepicker',
-                              'jquery.flot.min'] %>
+                              'jquery.flot.min',
+                              'jquery.labelify.js'] %>
 
   <%= stylesheet_link_tag 'default' %>
   <%= stylesheet_link_tag 'datepicker' %>
 </head>
 <script type="text/javascript">
-    var old_text = "";
     $(document).ready(function() {
-        function applyClick() {
-            var data = {};
-            data['field'] = $(this).attr('associate');
-            data['value'] = $($(this).attr('associate')).attr('value');
-            $.post('/profile_update', data, null, 'json');
-            $(this).attr('src', '/images/loading.gif');
-            $($(this).attr('associate')).removeClass('labelified_active');
-            $($(this).attr('associate')).addClass('labelified');
-            $($(this).attr('associate')).attr('read_only', true);
-            $($(this).attr('associate')).bind('click', onClick);
-            $(this).remove();
+        if ($('.date-pick').length > 0) {
+            $('.date-pick').datePicker({startDate:'2009-11-01'}).val($(this).attr('value')).trigger('change');
         }
-
-        function onClick() {
-            $(this).attr('read_only', false);
-            $(this).removeClass('labelified');
-            $(this).addClass('labelified_active');
-            $(this).unbind('click', null);
-            $(this).after('<img src="/images/apply_icon.png" width="15px" class="apply" associate="#' + $(this).attr('id') + '">')
-        }
-
-        $('.apply').live('click', applyClick);
-
-        $('.labelified').bind('click', onClick);
+        labelify();
     });
 </script>
 
 <body>
 
-<p style="color: green"><%= flash[:notice] %></p>
+<!-- p style="color: green"><%#= flash[:notice] %></p -->
 
 <%= yield %>
 

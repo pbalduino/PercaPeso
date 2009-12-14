@@ -85,6 +85,11 @@ a.dp-choose-date.dp-disabled {
     color:                 #7f7f7f;
 }
 
+#user_data a, #user_weight a {
+    margin-top:            2px;
+    font-size:             small;
+}
+
 #user_data br {
     clear:                 left;
 }
