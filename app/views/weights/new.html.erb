@@ -4,7 +4,7 @@
 
     $(function()
     {
-        $('.date-pick').datePicker({startDate:'2009-11-01'}).val(new Date().asString()).trigger('change');
+        $('.date-pick').datePicker({startDate:'2009-11-01'}).val($(this).attr('value')).trigger('change');
     });
 </script>
 <h1>New weight</h1>
