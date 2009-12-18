@@ -1,26 +1,18 @@
-<script type="text/javascript">
-    // Date.firstDayOfWeek = 0;
-    Date.format = 'yyyy-mm-dd';
-
-    $(function() {
-        $('.date-pick').datePicker({startDate:'2009-11-01'}).val($(this).attr('value')).trigger('change');
-    });
-</script>
 <h1>Editing weight</h1>
 
-<% form_for(@weight) do |f| %>
-    <%= f.error_messages %>
+<% form_for(@weight) do |form| %>
+    <%= form.error_messages %>
 
     <p>
-      <%= f.label :date %><br/>
-      <%= f.text_field :date, :readonly => true, :class => 'date-pick' %>
+      <%= form.label :date %><br/>
+      <%= form.text_field :date, :readonly => true, :class => 'date-pick', :value => @weight.date.strftime('%d/%m/%Y') %>
     </p>
     <p>
-      <%= f.label :weight %><br/>
-      <%= f.text_field :weight, :maxlength => 6 %>
+      <%= form.label :weight %><br/>
+      <%= form.text_field :weight, :maxlength => 6 %>
     </p>
     <p>
-      <%= f.submit 'Update' %>
+      <%= form.submit 'Update' %>
     </p>
 <% end %>
 

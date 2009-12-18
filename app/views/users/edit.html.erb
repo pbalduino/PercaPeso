@@ -1,4 +1,8 @@
 <%# TODO: show edit icon when hover textboxes %>
+<script type="text/javascript">
+
+</script>
+
 <div id="user_data">
   meus dados<br/>
   <%= label_tag :name, 'nome: ' %>
@@ -14,7 +18,7 @@
   <%= text_field_tag :meta, @user.meta, :class => 'labelified', :read_only => true %>
   <br/>
   <%= label_tag :date, 'data: ' %>
-  <%= text_field_tag :date, @user.date, :class => 'labelified', :read_only => true, :value => @user.date ? @user.date.strftime('%d/%m/%Y') : '' %>
+  <%= text_field_tag :date, @user.date, :class => 'labelified', :value => @user.date ? @user.date.strftime('%d/%m/%Y') : '' %>
   <br/>
   <%= link_to 'Sair', logout_path %>
 
@@ -59,7 +63,7 @@
       for (i = 0; i < 34; i++) {
           meta.push([i, <%= @first_weight.weight %> - (daily_meta * i)]);
       }
-      $.plot($("#placeholder"), [
+      plot = $.plot($("#placeholder"), [
           {
               label: "meta (kg)",
               data: meta
@@ -68,11 +72,15 @@
               label: "peso (kg)",
               data: uw
           },
-      ], {
+      ],
+      {
           grid: {
-              backgroundColor: { colors: ["#fff", "#eee"] }
+              backgroundColor: {
+                  colors: ["#fff", "#eee"]
+              }
           }
       });
+
       <% else %>
       $.plot($("#placeholder"), [], {grid: {backgroundColor: { colors: ["#fff", "#eee"] }}});
       <% end %>

@@ -6,30 +6,27 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
   <title>PercaPeso</title>
   <!--[if IE]><script type="text/javascript" src="/javascripts/excanvas.compiled.js"></script><![endif]-->
+  <!--[if IE]><script type="text/javascript" src="/javascripts/jquery.bgiframe.min.js"></script><![endif]-->
 
   <%= javascript_include_tag ['jquery.min',
                               'date',
+                              'date.pt-BR',
                               'jquery.datepicker',
                               'jquery.flot.min',
-                              'jquery.labelify.js'] %>
+                              'jquery.flot.crosshair',
+                              'jquery.labelify'] %>
 
   <%= stylesheet_link_tag 'default' %>
   <%= stylesheet_link_tag 'datepicker' %>
 </head>
 <script type="text/javascript">
     $(document).ready(function() {
-        if ($('.date-pick').length > 0) {
-            $('.date-pick').datePicker({startDate:'2009-11-01'}).val($(this).attr('value')).trigger('change');
-        }
+        $('.date-pick').datePicker({startDate:'01/11/2009'}); // .val($(this).attr('value')).trigger('change');
         labelify();
     });
 </script>
 
 <body>
-
-<!-- p style="color: green"><%#= flash[:notice] %></p -->
-
 <%= yield %>
-
 </body>
 </html>
