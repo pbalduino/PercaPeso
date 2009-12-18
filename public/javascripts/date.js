@@ -42,7 +42,7 @@ Date.dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday
 Date.abbrDayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 /**
- * An Array of month names starting with Janurary.
+ * An Array of month names starting with January.
  *
  * @example monthNames[0]
  * @result 'January'
