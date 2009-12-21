@@ -3,6 +3,7 @@ body {
     font-size:             large;
     color:                 #7f7f7f;
     width:                 900px;
+    margin:                auto;
 }
 
 input {
@@ -37,7 +38,7 @@ a.dp-choose-date.dp-disabled {
     cursor:                default;
 }
 
-#user_data, #user_weight, #graphic {
+#user_data, #user_weight, #graphic, #logon {
     background-color:      #f0f0f0;
     border:                gray solid 1px;
     margin-top:            10px;
@@ -59,6 +60,10 @@ a.dp-choose-date.dp-disabled {
     width:                 832px;
 }
 
+#logon {
+    width:                 350px;
+}
+
 .labelified {
     border-style:          none;
     cursor:                default;
@@ -73,14 +78,14 @@ a.dp-choose-date.dp-disabled {
     color:                 #7f7f7f;
 }
 
-#user_data label {
+#user_data label, #logon label {
     float:                 left;
     width:                 85px;
     font-size:             medium;
     margin-top:            2px;
 }
 
-#user_data input {
+#user_data input, #logon input {
     margin-top:            2px;
     color:                 #7f7f7f;
 }
@@ -102,4 +107,14 @@ a.dp-choose-date.dp-disabled {
 #user_weight th {
     text-align:            left;
     font-size:             medium;
+}
+
+#logon {
+    margin:                10px auto;
+    text-align:            left;
+}
+
+#signup {
+    float:                 left;
+    width:                 850px;
 }
