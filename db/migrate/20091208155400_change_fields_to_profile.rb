@@ -4,6 +4,5 @@ class ChangeFieldsToProfile < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :users, :meta
   end
 end

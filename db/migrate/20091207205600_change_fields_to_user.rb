@@ -5,7 +5,5 @@ class ChangeFieldsToUser < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :users, :meta
-    remove_column :users, :height
   end
 end

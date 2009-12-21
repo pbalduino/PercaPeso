@@ -9,11 +9,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091208155400) do
+ActiveRecord::Schema.define(:version => 20091221132000) do
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
-    t.string   "name",                      :limit => 100, :default => ""
+    t.string   "name",                      :limit => 100,                               :default => ""
     t.string   "email",                     :limit => 100
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20091208155400) do
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
     t.integer  "height"
-    t.decimal  "meta"
+    t.decimal  "meta",                                     :precision => 4, :scale => 1
     t.date     "date"
   end
 
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20091208155400) do
 
   create_table "weights", :force => true do |t|
     t.integer  "user_id"
-    t.datetime "date"
+    t.datetime "date",       :null => false
     t.decimal  "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
