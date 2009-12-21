@@ -5,7 +5,7 @@
 
   <p>
     <%= f.label :date %><br />
-      <%= f.text_field :date, :readonly => true, :class => 'date-pick', :value => Date.new.strftime('%d/%m/%Y') %>
+      <%= f.text_field :date, :readonly => true, :class => 'date-pick', :value => Date.today.strftime('%d/%m/%Y') %>
   </p>
   <p>
     <%= f.label :weight %><br />
