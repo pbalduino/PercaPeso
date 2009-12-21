@@ -1,12 +1,3 @@
-<script type="text/javascript">
-    Date.firstDayOfWeek = 0;
-    Date.format = 'yyyy-mm-dd';
-
-    $(function()
-    {
-        $('.date-pick').datePicker({startDate:'2009-11-01'}).val(new Date().asString()).trigger('change');
-    });
-</script>
 <h1>New weight</h1>
 
 <% form_for(@weight) do |f| %>
@@ -14,7 +5,7 @@
 
   <p>
     <%= f.label :date %><br />
-      <%= f.text_field :date, :readonly => true, :class => 'date-pick' %>
+      <%= f.text_field :date, :readonly => true, :class => 'date-pick', :value => Date.new.strftime('%d/%m/%Y') %>
   </p>
   <p>
     <%= f.label :weight %><br />
