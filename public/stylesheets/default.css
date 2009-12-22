@@ -38,7 +38,7 @@ a.dp-choose-date.dp-disabled {
     cursor:                default;
 }
 
-#user_data, #user_weight, #graphic, #logon {
+#user_data, #user_weight, #graphic, #logon, #footer {
     background-color:      #f0f0f0;
     border:                gray solid 1px;
     margin-top:            10px;
@@ -56,7 +56,7 @@ a.dp-choose-date.dp-disabled {
     margin-left:           10px;
 }
 
-#graphic {
+#graphic, #footer {
     width:                 832px;
 }
 
@@ -117,4 +117,8 @@ a.dp-choose-date.dp-disabled {
 #signup {
     float:                 left;
     width:                 850px;
+}
+
+#footer {
+    font-size: xx-small;
 }
