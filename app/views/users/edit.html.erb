@@ -16,7 +16,6 @@
   <%= text_field_tag :date, @user.date, :class => 'labelified', :value => @user.date ? @user.date.strftime('%d/%m/%Y') : '' %>
   <br/>
   <%= link_to 'Sair', logout_path %>
-
 </div>
 <div id="user_weight">
   meu peso
@@ -34,18 +33,16 @@
         </tr>
     <% end %>
   </table>
-  <%= link_to 'Adicionar peso', weights_path %>
+  <a href='#' id='addWeight'>Adicionar peso</a>
   <br/>
 </div>
 <div id="graphic">
   evolução x meta <br/>
-
   <div id="placeholder" style="width:600px;height:300px;">
   </div>
   <script type="text/javascript">
       <% if @first_weight && @user.date %>
-      uw = [
-          <% fw = @first_weight.date
+      uw = [<% fw = @first_weight.date
  ud = @user.date
  d = -1;
  (Date.new(fw.year, fw.month, fw.day) .. Date.new(ud.year, ud.month, ud.day)).each do |day| %>
@@ -56,9 +53,9 @@
       meta = [];
       <%= "daily_meta = #{(@first_weight.weight.to_f - @user.meta.to_f) / 33}" %>;
       for (i = 0; i < 34; i++) {
-          meta.push([i, <%= @first_weight.weight %> - (daily_meta * i)]);
+          meta.push([i,<%= @first_weight.weight %>-(daily_meta * i)]);
       }
-      plot = $.plot($("#placeholder"), [
+      $.plot($("#placeholder"), [
           {
               label: "meta (kg)",
               data: meta
@@ -67,17 +64,21 @@
               label: "peso (kg)",
               data: uw
           },
-      ],
-      {
-          grid: {
-              backgroundColor: {
-                  colors: ["#fff", "#eee"]
-              }
-          }
-      });
-
+      ], {grid:{backgroundColor:{colors:["#fff","#eee"]}}});
       <% else %>
       $.plot($("#placeholder"), [], {grid: {backgroundColor: { colors: ["#fff", "#eee"] }}});
       <% end %>
   </script>
+</div>
+<div id="weightForm">
+  <a href="#" id="closeForm">[X] fechar</a>
+<% form_for(@weight) do |f| %>
+    <%= f.error_messages %>
+    <%= f.label :date, 'data' %>
+    <%= f.text_field :date, :readonly => true, :class => 'date-pick', :value => Date.today.strftime('%d/%m/%Y') %><br />
+    <%= f.label :weight, 'peso (kg)' %>
+    <%= f.text_field :weight, :maxlength => 6 %>
+    <br/>
+    <%= f.submit 'Adicionar' %>
+<% end %>
 </div>

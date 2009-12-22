@@ -14,23 +14,32 @@
                               'jquery.datepicker',
                               'jquery.flot.min',
                               'jquery.flot.crosshair',
-                              'jquery.labelify'] %>
+                              'jquery.labelify',
+                              'jquery.blockUI'] %>
 
   <%= stylesheet_link_tag 'default' %>
   <%= stylesheet_link_tag 'datepicker' %>
 </head>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.date-pick').datePicker({startDate:'01/11/2009'}); // .val($(this).attr('value')).trigger('change');
+        $('#addWeight').click(function() {
+            $.blockUI({
+                message: $('#weightForm')
+            });
+        });
+
+        $('#closeForm').click(function() {
+            $.unblockUI();
+        });
         labelify();
+        $('.date-pick').datePicker({startDate:'01/11/2009'});
     });
 </script>
-
 <body>
 <%= yield %>
 <div id="footer">
   PercaPeso<br/>
-  Versão 0.4.35 - 22/Dez/2009
+  Versão 0.5.0 - 22/Dez/2009
 </div>
 </body>
 </html>

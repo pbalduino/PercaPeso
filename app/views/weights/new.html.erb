@@ -1,19 +1,14 @@
 <h1>New weight</h1>
 
 <% form_for(@weight) do |f| %>
-  <%= f.error_messages %>
+    <%= f.error_messages %>
 
-  <p>
-    <%= f.label :date %><br />
-      <%= f.text_field :date, :readonly => true, :class => 'date-pick', :value => Date.today.strftime('%d/%m/%Y') %>
-  </p>
-  <p>
-    <%= f.label :weight %><br />
+    <%= f.label :date %>
+    <%= f.text_field :date, :readonly => true, :class => 'date-pick', :value => Date.today.strftime('%d/%m/%Y') %><br />
+    <%= f.label :weight %>
     <%= f.text_field :weight, :maxlength => 6 %>
-  </p>
-  <p>
+    <br/>
     <%= f.submit 'Create' %>
-  </p>
 <% end %>
 
 <%= link_to 'Back', weights_path %>

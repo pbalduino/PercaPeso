@@ -9,6 +9,8 @@ body {
 input {
     border:                #7f7f7f solid 1px;
     color:                 #a0a0a0;
+    -moz-border-radius:    2px;
+    -webkit-border-radius: 2px;
 }
 
 a {
@@ -78,14 +80,14 @@ a.dp-choose-date.dp-disabled {
     color:                 #7f7f7f;
 }
 
-#user_data label, #logon label {
+#user_data label, #logon label, #weightForm label {
     float:                 left;
     width:                 85px;
     font-size:             medium;
     margin-top:            2px;
 }
 
-#user_data input, #logon input {
+#user_data input, #logon input, #weightForm input {
     margin-top:            2px;
     color:                 #7f7f7f;
 }
@@ -95,7 +97,7 @@ a.dp-choose-date.dp-disabled {
     font-size:             small;
 }
 
-#user_data br {
+#user_data br, #weightForm br {
     clear:                 left;
 }
 
@@ -120,5 +122,21 @@ a.dp-choose-date.dp-disabled {
 }
 
 #footer {
-    font-size: xx-small;
+    font-size:             xx-small;
+}
+
+#weightForm a {
+    font-size:             xx-small;
+}
+
+#weightForm {
+    background-color:      #f0f0f0;
+    display:               none;
+    text-align:            left;
+    width:                 365px;
+    padding:               10px;
+}
+
+#weight_date {
+    width:                 80px;
 }

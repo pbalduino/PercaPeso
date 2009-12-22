@@ -23,13 +23,12 @@ class WeightsController < ApplicationController
     @weight = Weight.new(params[:weight])
     @weight.user_id = session[:user_id]
     date = params[:weight][:date]
-    @weight.date = DateTime.new(date[6..9].to_i, date[3..4].to_i, date[0..1].to_i) 
+    @weight.date = DateTime.new(date[6..9].to_i, date[3..4].to_i, date[0..1].to_i)
 
     puts @weight.to_json
 
     if @weight.save
-      flash[:notice] = 'Weight was successfully created.'
-      redirect_to(@weight)
+      redirect_to profile_path
     else
       render :action => "new"
     end
