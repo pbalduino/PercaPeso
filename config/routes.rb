@@ -8,6 +8,8 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.profile '/profile', :controller => 'users', :action => 'edit'
   map.profile_update '/profile_update', :controller => 'users', :action => 'ajax_update'
+  map.ranking '/ranking', :controller => 'users', :action => 'ranking'
+
 
   map.resources :users
 

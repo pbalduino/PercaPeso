@@ -36,4 +36,25 @@ class UsersController < ApplicationController
 
     render :json => 'ok', :status => 200
   end
+
+  def ranking
+
+    data = [];
+
+    User.find(:all, :select => 'id, name, login, height', :conditions => {:id => [1, 3, 6, 8, 9]}).each do |user|
+      first = Weight.find(:all, :select => 'user_id, weight', :conditions => {:user_id => user.id}, :order => 'date').first
+
+      initial = (Weight.find(:all, :select => 'user_id, weight', :conditions => {:user_id => user.id}, :order => 'date').first.weight.to_f / ((user.height.to_f / 100) ** 2))
+      final = (Weight.find(:all, :select => 'user_id, weight', :conditions => {:user_id => user.id}, :order => 'date').last.weight.to_f / ((user.height.to_f / 100) ** 2))
+      row = {:name => !user.name.empty? ? user.name : user.login,
+             :height => user.height,
+             :delta => (final - initial) * -1}
+
+      data << row
+    end
+
+    data.sort!{|a, b | a[:delta]> b[:delta] ? -1 : 1}
+
+    render :xml => data
+  end
 end
