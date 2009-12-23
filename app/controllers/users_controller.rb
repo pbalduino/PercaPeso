@@ -48,7 +48,7 @@ class UsersController < ApplicationController
       final = (Weight.find(:all, :select => 'user_id, weight', :conditions => {:user_id => user.id}, :order => 'date').last.weight.to_f / ((user.height.to_f / 100) ** 2))
       row = {:name => !user.name.empty? ? user.name : user.login,
              :height => user.height,
-             :delta => (final - initial) * -1}
+             :delta => (1 - (final.to_f / initial.to_f)) * 100}
 
       data << row
     end
