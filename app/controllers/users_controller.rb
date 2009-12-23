@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def ranking
 
-    data = [];
+    @data = [];
 
     User.find(:all, :select => 'id, name, login, height', :conditions => {:id => [1, 3, 6, 8, 9]}).each do |user|
       first = Weight.find(:all, :select => 'user_id, weight', :conditions => {:user_id => user.id}, :order => 'date').first
@@ -50,11 +50,9 @@ class UsersController < ApplicationController
              :height => user.height,
              :delta => (1 - (final.to_f / initial.to_f)) * 100}
 
-      data << row
+      @data << row
     end
 
-    data.sort!{|a, b | a[:delta]> b[:delta] ? -1 : 1}
-
-    render :xml => data
+    @data.sort!{|a, b | a[:delta]> b[:delta] ? -1 : 1}
   end
 end

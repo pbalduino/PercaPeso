@@ -1,0 +1,19 @@
+<div id="graphic">
+  Gerado em: <%= DateTime.now.strftime('%d/%m/%Y %H:%m') %>
+  <br/>
+  <table width="80%" border="1">
+    <tr>
+      <th>Posição</th>
+      <th>Nome</th>
+      <th>Perda</th>
+    </tr>
+    <% pos = 0 %>
+    <% @data.each do |row| %>
+        <tr>
+          <td width="10"><%= pos+=1 %></td>
+          <td><%= row[:name] %></td>
+          <td><%= "%.3f" % row[:delta].to_f %>%</td>
+        </tr>
+    <% end %>
+  </table>
+</div>
